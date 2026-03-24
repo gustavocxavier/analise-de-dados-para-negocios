@@ -1,0 +1,7 @@
+format: jb-book
+root: README
+chapters:
+- file: 01_intro/modulo_1
+- file: 02_carregar_limpar/modulo_2
+- file: 03_visualizacao/modulo_3
+- file: 04_teste_de_hipotese/modulo_4
