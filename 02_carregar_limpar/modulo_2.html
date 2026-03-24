@@ -1,0 +1,625 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Módulo 2: Manipulação de Dados e Estatística Descritiva &#8212; Análise de Dados para Negócios com Python e Colab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_carregar_limpar/modulo_2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Módulo 3: Visualização de Dados com Seaborn" href="../03_visualizacao/modulo_3.html" />
+    <link rel="prev" title="Módulo 1: Fundamentos do Google Colab e Python" href="../01_intro/modulo_1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Análise de Dados para Negócios com Python e Colab</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Análise de Dados para Negócios com Python e Google Colab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro/modulo_1.html">Módulo 1: Fundamentos do Google Colab e Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Módulo 2: Manipulação de Dados e Estatística Descritiva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_visualizacao/modulo_3.html">Módulo 3: Visualização de Dados com Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_teste_de_hipotese/modulo_4.html">Módulo 4: Testes de Hipóteses com Pingouin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/02_carregar_limpar/modulo_2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Módulo 2: Manipulação de Dados e Estatística Descritiva</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importando-dados">2.1 Importando Dados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecao-e-limpeza">2.2 Inspeção e Limpeza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estatistica-descritiva">2.3 Estatística Descritiva</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-2">📊 Exemplo de Negócio — Módulo 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-2">✏️ Exercícios — Módulo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-analise-os-dados-de-vendas">Questão 1 – Analise os Dados de Vendas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-describe">Questão 2 – Interprete o <code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://colab.research.google.com/github/gustavocxavier/analise-de-dados-para-negocios/blob/main/02_carregar_limpar/modulo_2.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="modulo-2-manipulacao-de-dados-e-estatistica-descritiva">
+<h1>Módulo 2: Manipulação de Dados e Estatística Descritiva<a class="headerlink" href="#modulo-2-manipulacao-de-dados-e-estatistica-descritiva" title="Link to this heading">#</a></h1>
+<p>Bem-vindos ao coração da análise de dados! Hoje vamos aprender a trazer dados do mundo real (arquivos CSV e Excel) para dentro do Python e descobrir como limpá-los.</p>
+<p>Pense no <strong>Pandas</strong> como um Excel com “superpoderes”, capaz de lidar com milhões de linhas em segundos sem travar o seu computador.</p>
+<section id="importando-dados">
+<h2>2.1 Importando Dados<a class="headerlink" href="#importando-dados" title="Link to this heading">#</a></h2>
+<p>A primeira etapa de qualquer projeto de negócios é carregar as informações. Vamos usar a função <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> do Pandas para ler uma base de dados imobiliários que já vem de exemplo no Google Colab.</p>
+<blockquote>
+<div><p><strong>Dica:</strong> Em projetos reais, você substituiria <code class="docutils literal notranslate"><span class="pre">'sample_data/california_housing_train.csv'</span></code> pelo caminho do seu próprio arquivo, por exemplo <code class="docutils literal notranslate"><span class="pre">'vendas_2024.csv'</span></code>.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Importando a biblioteca Pandas (apelidada carinhosamente de &#39;pd&#39;)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 2. Lendo o arquivo CSV e guardando em uma variável chamada &#39;df&#39; (Data Frame)</span>
+<span class="c1"># df = pd.read_csv(&#39;sample_data/california_housing_train.csv&#39;)</span>
+
+<span class="c1"># Lendo diretamente de um site</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/vendas.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># 3. Mostrando as 5 primeiras linhas da nossa tabela (como se fosse o topo da planilha)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inspecao-e-limpeza">
+<h2>2.2 Inspeção e Limpeza<a class="headerlink" href="#inspecao-e-limpeza" title="Link to this heading">#</a></h2>
+<p>Dados reais são bagunçados! Eles vêm com informações faltando (valores nulos ou <code class="docutils literal notranslate"><span class="pre">NaN</span></code>) e linhas duplicadas. Se não limparmos isso, nossas análises e decisões de negócios estarão erradas.</p>
+<p>Vamos inspecionar a saúde da nossa base.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Quantas linhas e colunas temos?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tamanho da base:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Existe algum valor vazio (nulo) na nossa tabela?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Valores vazios por coluna:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como sabemos que dados sujos atrapalham decisões, vamos usar alguns comandos para tratar os valores nulos e remover duplicatas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LIMPEZA DE DADOS</span>
+
+<span class="c1"># Removendo linhas que tenham valores vazios (Drop NA)</span>
+<span class="n">df_limpo</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Removendo linhas idênticas (Duplicatas)</span>
+<span class="n">df_limpo</span> <span class="o">=</span> <span class="n">df_limpo</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tamanho original:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Limpeza concluída! Nova quantidade de linhas:&quot;</span><span class="p">,</span> <span class="n">df_limpo</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estatistica-descritiva">
+<h2>2.3 Estatística Descritiva<a class="headerlink" href="#estatistica-descritiva" title="Link to this heading">#</a></h2>
+<p>Com os dados limpos, podemos começar a extrair inteligência. Qual é o preço médio dos imóveis? Qual é o valor máximo?</p>
+<p>O Pandas nos dá um resumo executivo com apenas um comando: <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>. Depois, vamos preparar o terreno para estatísticas mais avançadas com o pacote <strong>Pingouin</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># O resumo executivo dos dados numéricos (Média, Desvio Padrão, Min, Max)</span>
+<span class="c1"># O comando describe() gera a estatística de todas colunas numéricas de uma vez!</span>
+<span class="n">df_limpo</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exemplo-de-negocio-modulo-2">
+<h2>📊 Exemplo de Negócio — Módulo 2<a class="headerlink" href="#exemplo-de-negocio-modulo-2" title="Link to this heading">#</a></h2>
+<p><strong>Cenário:</strong> O departamento de RH precisa de um relatório rápido sobre a folha de pagamento.
+Vamos carregar o arquivo <code class="docutils literal notranslate"><span class="pre">rh_salarios.csv</span></code>, inspecionar a saúde dos dados e extrair estatísticas descritivas para uma reunião executiva.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Carregando dados de salários do RH</span>
+<span class="n">df_rh2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/rh_salarios.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Inspeção rápida</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Linhas e colunas:&#39;</span><span class="p">,</span> <span class="n">df_rh2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valores nulos:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">df_rh2</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Limpeza</span>
+<span class="n">df_rh2</span> <span class="o">=</span> <span class="n">df_rh2</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+<span class="c1"># Estatísticas executivas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">--- Relatório de Salários ---&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Salário médio:   R$ </span><span class="si">{</span><span class="n">df_rh2</span><span class="p">[</span><span class="s1">&#39;Salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Salário mediano: R$ </span><span class="si">{</span><span class="n">df_rh2</span><span class="p">[</span><span class="s1">&#39;Salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Menor salário:   R$ </span><span class="si">{</span><span class="n">df_rh2</span><span class="p">[</span><span class="s1">&#39;Salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Maior salário:   R$ </span><span class="si">{</span><span class="n">df_rh2</span><span class="p">[</span><span class="s1">&#39;Salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretação:</strong> Quando a média é muito maior que a mediana, existe uma concentração de salários
+altos ‘puxando’ a média. Nesse caso, a <strong>mediana</strong> é a medida mais honesta para comunicar ao RH
+o salário ‘típico’ da empresa.</p>
+</section>
+<hr class="docutils" />
+<section id="exercicios-modulo-2">
+<h2>✏️ Exercícios — Módulo 2<a class="headerlink" href="#exercicios-modulo-2" title="Link to this heading">#</a></h2>
+<section id="questao-1-analise-os-dados-de-vendas">
+<h3>Questão 1 – Analise os Dados de Vendas<a class="headerlink" href="#questao-1-analise-os-dados-de-vendas" title="Link to this heading">#</a></h3>
+<p>Usando o arquivo <code class="docutils literal notranslate"><span class="pre">vendas.csv</span></code> (que já foi carregado como <code class="docutils literal notranslate"><span class="pre">df</span></code> no início do módulo), responda:</p>
+<ul class="simple">
+<li><p>Quantas linhas e colunas ele possui?</p></li>
+<li><p>Existe algum valor nulo?</p></li>
+<li><p>Qual é o faturamento médio por linha do arquivo?</p></li>
+</ul>
+<p><strong>Tarefa:</strong> Complete e execute o código abaixo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/vendas.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># 1. Tamanho da base</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tamanho:&#39;</span><span class="p">,</span> <span class="n">df_v</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># 2. Valores nulos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Valores nulos:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_v</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># 3. Faturamento médio – complete a linha abaixo</span>
+<span class="c1"># media_fat = df_v[___].mean()</span>
+<span class="c1"># print(f&#39;Faturamento médio: R$ {media_fat:,.2f}&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questao-2-interprete-o-describe">
+<h3>Questão 2 – Interprete o <code class="docutils literal notranslate"><span class="pre">.describe()</span></code><a class="headerlink" href="#questao-2-interprete-o-describe" title="Link to this heading">#</a></h3>
+<p>Execute o código abaixo e responda às perguntas:</p>
+<ol class="arabic simple">
+<li><p>Qual é o faturamento <strong>mínimo</strong> registrado?</p></li>
+<li><p>Qual é o valor do <strong>3º quartil (75%)</strong> e o que ele significa para o negócio?</p></li>
+<li><p>A base de vendas está equilibrada entre regiões? Como você verificaria isso com Pandas?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/vendas.csv&#39;</span><span class="p">)</span>
+<span class="n">df_v</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./02_carregar_limpar"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../01_intro/modulo_1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Módulo 1: Fundamentos do Google Colab e Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../03_visualizacao/modulo_3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Módulo 3: Visualização de Dados com Seaborn</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importando-dados">2.1 Importando Dados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecao-e-limpeza">2.2 Inspeção e Limpeza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estatistica-descritiva">2.3 Estatística Descritiva</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-2">📊 Exemplo de Negócio — Módulo 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-2">✏️ Exercícios — Módulo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-analise-os-dados-de-vendas">Questão 1 – Analise os Dados de Vendas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-describe">Questão 2 – Interprete o <code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

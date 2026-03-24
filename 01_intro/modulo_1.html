@@ -1,0 +1,685 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Módulo 1: Fundamentos do Google Colab e Python &#8212; Análise de Dados para Negócios com Python e Colab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_intro/modulo_1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Módulo 2: Manipulação de Dados e Estatística Descritiva" href="../02_carregar_limpar/modulo_2.html" />
+    <link rel="prev" title="Análise de Dados para Negócios com Python e Google Colab" href="../README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Análise de Dados para Negócios com Python e Colab</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Análise de Dados para Negócios com Python e Google Colab
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Módulo 1: Fundamentos do Google Colab e Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_carregar_limpar/modulo_2.html">Módulo 2: Manipulação de Dados e Estatística Descritiva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_visualizacao/modulo_3.html">Módulo 3: Visualização de Dados com Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_teste_de_hipotese/modulo_4.html">Módulo 4: Testes de Hipóteses com Pingouin</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_intro/modulo_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Módulo 1: Fundamentos do Google Colab e Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-ambiente-google-colab">1.1 O Ambiente Google Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celula-de-codigo">Célula de Código</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logica-basica-de-python">1.2 Lógica Básica de Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-poder-das-bibliotecas">1.3: O Poder das Bibliotecas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series-temporais-grafico-de-linha">1.3.1. Séries Temporais (Gráfico de Linha)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisando-categorias-boxplot">1.3.2. Analisando Categorias (Boxplot)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-1">📊 Exemplo de Negócio — Módulo 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-1">✏️ Exercícios — Módulo 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-calcule-o-lucro-de-outro-produto">Questão 1 – Calcule o Lucro de Outro Produto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-codigo">Questão 2 – Interprete o Código</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a class="reference external" href="https://colab.research.google.com/github/gustavocxavier/analise-de-dados-para-negocios/blob/main/01_intro/modulo_1.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="modulo-1-fundamentos-do-google-colab-e-python">
+<h1>Módulo 1: Fundamentos do Google Colab e Python<a class="headerlink" href="#modulo-1-fundamentos-do-google-colab-e-python" title="Link to this heading">#</a></h1>
+<p>Bem-vindos ao início da nossa jornada de análise de dados! Neste módulo vamos entender o ambiente do Google Colab, aprender o básico de Python e conhecer as bibliotecas que vão transformar a forma como você trabalha com dados.</p>
+<section id="o-ambiente-google-colab">
+<h2>1.1 O Ambiente Google Colab<a class="headerlink" href="#o-ambiente-google-colab" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Computação em Nuvem</strong>: O Colab executa seu código nos servidores do Google.</p></li>
+<li><p><strong>Sem Instalação</strong>: Você só precisa do seu navegador.</p></li>
+<li><p><strong>Células</strong>: O Notebook é dividido em células de <strong>Texto</strong> e células de <strong>Código</strong>.</p></li>
+</ul>
+<section id="celula-de-codigo">
+<h3>Célula de Código<a class="headerlink" href="#celula-de-codigo" title="Link to this heading">#</a></h3>
+<p>Ao clicar no botão de ‘play’ ao lado de uma célula de código, ela é executada. O resultado aparece logo abaixo. Experimente executar a célula a seguir! Lembre-se que esse é o primeiro código que você roda, então ele demora alguns segundos para começar a rodar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Olá, Negócios!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Olá, Negócios!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="logica-basica-de-python">
+<h2>1.2 Lógica Básica de Python<a class="headerlink" href="#logica-basica-de-python" title="Link to this heading">#</a></h2>
+<p>Aqui usaremos variáveis para armazenar informações de negócio. Pense em variáveis como caixinhas com etiquetas: você guarda um valor dentro (como <code class="docutils literal notranslate"><span class="pre">receita</span> <span class="pre">=</span> <span class="pre">15000</span></code>) e depois pode usá-lo em qualquer cálculo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">receita</span> <span class="o">=</span> <span class="mi">15000</span>
+<span class="n">custo</span> <span class="o">=</span> <span class="mi">8000</span>
+<span class="n">lucro</span> <span class="o">=</span> <span class="n">receita</span> <span class="o">-</span> <span class="n">custo</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O lucro foi de R$</span><span class="si">{</span><span class="n">lucro</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Exibe o lucro formatado como moeda</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>O lucro foi de R$7000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="o-poder-das-bibliotecas">
+<h2>1.3: O Poder das Bibliotecas<a class="headerlink" href="#o-poder-das-bibliotecas" title="Link to this heading">#</a></h2>
+<p>Imagine que o Python puro é um celular novo que acabou de sair da caixa. Ele faz ligações e manda mensagens, mas para fazer coisas incríveis, você precisa instalar <strong>aplicativos</strong>.</p>
+<p>No Python, esses aplicativos são chamados de <strong>Bibliotecas</strong> (ou <em>Libraries</em>). Para que o Python possa usá-las, precisamos <strong>importá-las</strong> no início do nosso código. Vamos usar as mais famosas no mundo dos negócios:</p>
+<ul class="simple">
+<li><p><strong>Pandas</strong>: Para ler e organizar dados (como o Excel).</p></li>
+<li><p><strong>Seaborn</strong>: Para criar gráficos bonitos e profissionais com facilidade.</p></li>
+<li><p><strong>Matplotlib</strong>: A biblioteca gráfica base do Python, usada junto com o Seaborn para personalização extra.</p></li>
+<li><p><strong>Pingouin</strong>: Para testes estatísticos de hipóteses, com resultados em formato de tabela legível.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importando nossas bibliotecas (nossos &quot;aplicativos&quot;)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Configurando um tema visual bonito para os gráficos</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="series-temporais-grafico-de-linha">
+<h3>1.3.1. Séries Temporais (Gráfico de Linha)<a class="headerlink" href="#series-temporais-grafico-de-linha" title="Link to this heading">#</a></h3>
+<p>Vamos analisar um conjunto de dados real sobre a quantidade de passageiros em voos ao longo dos anos. Veja como é simples criar um gráfico de série temporal com apenas uma linha de código principal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregando os dados de voos que já vem embutidos no Seaborn</span>
+<span class="n">voos</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;flights&quot;</span><span class="p">)</span>
+
+<span class="c1"># Criando o gráfico de linha (Série Temporal) com xlabel e ylabel</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">voos</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;passengers&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Ano&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Passageiros&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Passageiros&#39;)
+</pre></div>
+</div>
+<img alt="../_images/0df635132ba858cab9b0719ba5c26ad1c780bef787ab818a4cf27464e8e4046e.png" src="../_images/0df635132ba858cab9b0719ba5c26ad1c780bef787ab818a4cf27464e8e4046e.png" />
+</div>
+</div>
+</section>
+<section id="analisando-categorias-boxplot">
+<h3>1.3.2. Analisando Categorias (Boxplot)<a class="headerlink" href="#analisando-categorias-boxplot" title="Link to this heading">#</a></h3>
+<p>Agora, vamos imaginar que você gerencia um restaurante. Você quer saber: <strong>Em qual dia da semana os clientes gastam mais dinheiro?</strong></p>
+<p>O <em>Boxplot</em> é o gráfico perfeito para relacionar uma categoria (Dia da Semana) com um número contínuo (Valor da Conta). Ele mostra a mediana, os quartis e os valores atípicos (outliers) de forma compacta.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregando dados de gorjetas e contas de um restaurante</span>
+<span class="n">gorjetas</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+
+<span class="c1"># Criando o Boxplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">gorjetas</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set2&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;, ylabel=&#39;total_bill&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/877cea3f3afc626258423c91aff40adfd28d173b1ce65486fa1f033178b5da26.png" src="../_images/877cea3f3afc626258423c91aff40adfd28d173b1ce65486fa1f033178b5da26.png" />
+</div>
+</div>
+<p>As bibliotecas vistas são as mais importantes para análise de dados, mas existem muitas outras que podem ser úteis dependendo do tipo de análise que você deseja fazer. O importante é saber que o Python tem uma vasta gama de ferramentas à sua disposição para transformar dados brutos em insights valiosos para o seu negócio.</p>
+<p>Outras bibliotecas populares incluem:</p>
+<ul class="simple">
+<li><p><strong>NumPy</strong>: Para cálculos numéricos avançados.</p></li>
+<li><p><strong>Matplotlib</strong>: Para gráficos personalizados e detalhados.</p></li>
+<li><p><strong>Plotly</strong>: Para gráficos interativos e visualizações avançadas.</p></li>
+<li><p><strong>Scikit-learn</strong>: Para machine learning e análise preditiva.</p></li>
+</ul>
+<p>Mas para este curso, focaremos principalmente em Pandas e Seaborn, pois são essenciais para a maioria das análises de dados que precisamos fazer.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exemplo-de-negocio-modulo-1">
+<h2>📊 Exemplo de Negócio — Módulo 1<a class="headerlink" href="#exemplo-de-negocio-modulo-1" title="Link to this heading">#</a></h2>
+<p><strong>Cenário:</strong> Você é analista em uma distribuidora. O gestor quer saber rapidamente o <strong>lucro líquido</strong> de uma venda específica e pede que você crie um mini-script em Python para calcular e exibir o resultado.</p>
+<p>Execute a célula abaixo e observe como o Python funciona como uma calculadora inteligente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exemplo de Negócio – Módulo 1</span>
+<span class="c1"># Dados de uma venda da distribuidora</span>
+<span class="n">preco_venda</span>   <span class="o">=</span> <span class="mf">4500.00</span>  <span class="c1"># Receita da venda</span>
+<span class="n">custo_produto</span> <span class="o">=</span> <span class="mf">2800.00</span>  <span class="c1"># Custo do produto</span>
+<span class="n">frete</span>         <span class="o">=</span> <span class="mf">150.00</span>   <span class="c1"># Custo de frete</span>
+<span class="n">impostos</span>      <span class="o">=</span> <span class="mf">360.00</span>   <span class="c1"># Impostos sobre a venda</span>
+
+<span class="n">lucro_liquido</span> <span class="o">=</span> <span class="n">preco_venda</span> <span class="o">-</span> <span class="n">custo_produto</span> <span class="o">-</span> <span class="n">frete</span> <span class="o">-</span> <span class="n">impostos</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Receita:          R$ </span><span class="si">{</span><span class="n">preco_venda</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Custos totais:    R$ </span><span class="si">{</span><span class="p">(</span><span class="n">custo_produto</span><span class="o">+</span><span class="n">frete</span><span class="o">+</span><span class="n">impostos</span><span class="p">)</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lucro líquido:    R$ </span><span class="si">{</span><span class="n">lucro_liquido</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Margem de lucro:  </span><span class="si">{</span><span class="n">lucro_liquido</span><span class="o">/</span><span class="n">preco_venda</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretação:</strong> A célula acima mostra a margem de lucro daquela venda.
+Se a margem cair abaixo de 10%, pode ser necessário renegociar o custo do produto ou o frete.</p>
+</section>
+<hr class="docutils" />
+<section id="exercicios-modulo-1">
+<h2>✏️ Exercícios — Módulo 1<a class="headerlink" href="#exercicios-modulo-1" title="Link to this heading">#</a></h2>
+<section id="questao-1-calcule-o-lucro-de-outro-produto">
+<h3>Questão 1 – Calcule o Lucro de Outro Produto<a class="headerlink" href="#questao-1-calcule-o-lucro-de-outro-produto" title="Link to this heading">#</a></h3>
+<p>Uma empresa vendeu um notebook por <strong>R$ 3.200,00</strong>. O custo do produto foi <strong>R$ 2.100,00</strong>,
+o frete <strong>R$ 80,00</strong> e os impostos <strong>R$ 256,00</strong>.</p>
+<p><strong>Tarefa:</strong> Adapte o código do exemplo acima para calcular o lucro líquido e a margem de lucro desse notebook.
+Substitua os valores e execute a célula.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Questão 1 – preencha os valores corretos e execute</span>
+<span class="n">preco_venda</span>   <span class="o">=</span> <span class="n">___</span>   <span class="c1"># R$ 3200,00</span>
+<span class="n">custo_produto</span> <span class="o">=</span> <span class="n">___</span>   <span class="c1"># R$ 2100,00</span>
+<span class="n">frete</span>         <span class="o">=</span> <span class="n">___</span>   <span class="c1"># R$ 80,00</span>
+<span class="n">impostos</span>      <span class="o">=</span> <span class="n">___</span>   <span class="c1"># R$ 256,00</span>
+
+<span class="n">lucro_liquido</span> <span class="o">=</span> <span class="n">preco_venda</span> <span class="o">-</span> <span class="n">custo_produto</span> <span class="o">-</span> <span class="n">frete</span> <span class="o">-</span> <span class="n">impostos</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lucro líquido:  R$ </span><span class="si">{</span><span class="n">lucro_liquido</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Margem:         </span><span class="si">{</span><span class="n">lucro_liquido</span><span class="o">/</span><span class="n">preco_venda</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questao-2-interprete-o-codigo">
+<h3>Questão 2 – Interprete o Código<a class="headerlink" href="#questao-2-interprete-o-codigo" title="Link to this heading">#</a></h3>
+<p>Leia o código abaixo e <strong>sem executá-lo</strong>, responda:</p>
+<ol class="arabic simple">
+<li><p>Qual valor será impresso na tela?</p></li>
+<li><p>O que a variável <code class="docutils literal notranslate"><span class="pre">margem</span></code> representa no contexto de negócios?</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">receita</span>  <span class="o">=</span> <span class="mi">12000</span>
+<span class="n">despesas</span> <span class="o">=</span> <span class="mi">9500</span>
+<span class="n">margem</span>   <span class="o">=</span> <span class="p">(</span><span class="n">receita</span> <span class="o">-</span> <span class="n">despesas</span><span class="p">)</span> <span class="o">/</span> <span class="n">receita</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Margem operacional: </span><span class="si">{</span><span class="n">margem</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Dica:</strong> Execute a célula abaixo para conferir sua resposta!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">receita</span>  <span class="o">=</span> <span class="mi">12000</span>
+<span class="n">despesas</span> <span class="o">=</span> <span class="mi">9500</span>
+<span class="n">margem</span>   <span class="o">=</span> <span class="p">(</span><span class="n">receita</span> <span class="o">-</span> <span class="n">despesas</span><span class="p">)</span> <span class="o">/</span> <span class="n">receita</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Margem operacional: </span><span class="si">{</span><span class="n">margem</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Análise de Dados para Negócios com Python e Google Colab</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../02_carregar_limpar/modulo_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Módulo 2: Manipulação de Dados e Estatística Descritiva</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-ambiente-google-colab">1.1 O Ambiente Google Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celula-de-codigo">Célula de Código</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logica-basica-de-python">1.2 Lógica Básica de Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-poder-das-bibliotecas">1.3: O Poder das Bibliotecas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series-temporais-grafico-de-linha">1.3.1. Séries Temporais (Gráfico de Linha)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisando-categorias-boxplot">1.3.2. Analisando Categorias (Boxplot)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-1">📊 Exemplo de Negócio — Módulo 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-1">✏️ Exercícios — Módulo 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-calcule-o-lucro-de-outro-produto">Questão 1 – Calcule o Lucro de Outro Produto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-codigo">Questão 2 – Interprete o Código</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
