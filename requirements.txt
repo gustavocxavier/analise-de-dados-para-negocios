@@ -1,0 +1,6 @@
+jupyter-book
+pingouin
+pandas
+seaborn
+matplotlib
+ghp-import
