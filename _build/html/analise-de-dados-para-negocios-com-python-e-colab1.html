@@ -1,0 +1,1272 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Módulo 1: Fundamentos do Google Colab e Python &#8212; Análise de Dados para Negócios com Python e Colab</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'analise-de-dados-para-negocios-com-python-e-colab1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Análise de Dados para Negócios com Python e Colab</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Análise de Dados para Negócios com Python e Google Colab
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/analise-de-dados-para-negocios-com-python-e-colab1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Módulo 1: Fundamentos do Google Colab e Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Módulo 1: Fundamentos do Google Colab e Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-ambiente-google-colab">1.1 O Ambiente Google Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celula-de-codigo">Célula de Código</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logica-basica-de-python">1.2 Lógica Básica de Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-poder-das-bibliotecas">1.3: O Poder das Bibliotecas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series-temporais-grafico-de-linha">1.3.1. Séries Temporais (Gráfico de Linha)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisando-categorias-boxplot">1.3.2. Analisando Categorias (Boxplot)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-1">📊 Exemplo de Negócio — Módulo 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-1">✏️ Exercícios — Módulo 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-calcule-o-lucro-de-outro-produto">Questão 1 – Calcule o Lucro de Outro Produto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-codigo">Questão 2 – Interprete o Código</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-2-manipulacao-de-dados-e-estatistica-descritiva">Módulo 2: Manipulação de Dados e Estatística Descritiva</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importando-dados">2.1 Importando Dados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecao-e-limpeza">2.2 Inspeção e Limpeza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estatistica-descritiva">2.3 Estatística Descritiva</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-2">📊 Exemplo de Negócio — Módulo 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-2">✏️ Exercícios — Módulo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-analise-os-dados-de-vendas">Questão 1 – Analise os Dados de Vendas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-describe">Questão 2 – Interprete o <code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-3-visualizacao-de-dados-com-seaborn">Módulo 3: Visualização de Dados com Seaborn</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-3-1-graficos-essenciais-para-negocios">Tópico 3.1: Gráficos Essenciais para Negócios</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cenario-1-vendas-por-regiao-grafico-de-barras">Cenário 1: Vendas por Região (Gráfico de Barras)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cenario-2-people-analytics-histograma">Cenário 2: People Analytics (Histograma)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cenario-3-marketing-vs-vendas-grafico-de-dispersao">Cenário 3: Marketing vs. Vendas (Gráfico de Dispersão)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-3-2-customizacao-simples-sem-complicacao">Tópico 3.2: Customização Simples (Sem Complicação!)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-o-mundo-classico-do-python-matplotlib">Bônus: O Mundo “Clássico” do Python (Matplotlib)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-3">📊 Exemplo de Negócio — Módulo 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-3">✏️ Exercícios — Módulo 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-crie-um-histograma-com-cor-diferente">Questão 1 – Crie um Histograma com Cor Diferente</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-grafico-de-barras">Questão 2 – Interprete o Gráfico de Barras</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-4-testes-de-hipoteses-com-pingouin">Módulo 4: Testes de Hipóteses com Pingouin</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-4-1-teste-a-b-o-famoso-teste-t">Tópico 4.1: Teste A/B (O Famoso Teste T)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-4-2-comparando-varias-opcoes-anova">Tópico 4.2: Comparando Várias Opções (ANOVA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-4-3-correlacao-causa-e-efeito">Tópico 4.3: Correlação (Causa e Efeito?)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-o-mundo-classico-do-python-scipy">Bônus: O Mundo “Clássico” do Python (SciPy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-4">📊 Exemplo de Negócio — Módulo 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-4">✏️ Exercícios — Módulo 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-realize-um-teste-a-b">Questão 1 – Realize um Teste A/B</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-uma-anova">Questão 2 – Interprete uma ANOVA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-1-fundamentos-do-google-colab-e-python">
+<h1>Módulo 1: Fundamentos do Google Colab e Python<a class="headerlink" href="#modulo-1-fundamentos-do-google-colab-e-python" title="Link to this heading">#</a></h1>
+<p>Bem-vindos ao início da nossa jornada de análise de dados! Neste módulo vamos entender o ambiente do Google Colab, aprender o básico de Python e conhecer as bibliotecas que vão transformar a forma como você trabalha com dados.</p>
+<section id="o-ambiente-google-colab">
+<h2>1.1 O Ambiente Google Colab<a class="headerlink" href="#o-ambiente-google-colab" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Computação em Nuvem</strong>: O Colab executa seu código nos servidores do Google.</p></li>
+<li><p><strong>Sem Instalação</strong>: Você só precisa do seu navegador.</p></li>
+<li><p><strong>Células</strong>: O Notebook é dividido em células de <strong>Texto</strong> e células de <strong>Código</strong>.</p></li>
+</ul>
+<section id="celula-de-codigo">
+<h3>Célula de Código<a class="headerlink" href="#celula-de-codigo" title="Link to this heading">#</a></h3>
+<p>Ao clicar no botão de ‘play’ ao lado de uma célula de código, ela é executada. O resultado aparece logo abaixo. Experimente executar a célula a seguir! Lembre-se que esse é o primeiro código que você roda, então ele demora alguns segundos para começar a rodar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Olá, Negócios!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Olá, Negócios!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="logica-basica-de-python">
+<h2>1.2 Lógica Básica de Python<a class="headerlink" href="#logica-basica-de-python" title="Link to this heading">#</a></h2>
+<p>Aqui usaremos variáveis para armazenar informações de negócio. Pense em variáveis como caixinhas com etiquetas: você guarda um valor dentro (como <code class="docutils literal notranslate"><span class="pre">receita</span> <span class="pre">=</span> <span class="pre">15000</span></code>) e depois pode usá-lo em qualquer cálculo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">receita</span> <span class="o">=</span> <span class="mi">15000</span>
+<span class="n">custo</span> <span class="o">=</span> <span class="mi">8000</span>
+<span class="n">lucro</span> <span class="o">=</span> <span class="n">receita</span> <span class="o">-</span> <span class="n">custo</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O lucro foi de R$</span><span class="si">{</span><span class="n">lucro</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Exibe o lucro formatado como moeda</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>O lucro foi de R$7000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="o-poder-das-bibliotecas">
+<h2>1.3: O Poder das Bibliotecas<a class="headerlink" href="#o-poder-das-bibliotecas" title="Link to this heading">#</a></h2>
+<p>Imagine que o Python puro é um celular novo que acabou de sair da caixa. Ele faz ligações e manda mensagens, mas para fazer coisas incríveis, você precisa instalar <strong>aplicativos</strong>.</p>
+<p>No Python, esses aplicativos são chamados de <strong>Bibliotecas</strong> (ou <em>Libraries</em>). Para que o Python possa usá-las, precisamos <strong>importá-las</strong> no início do nosso código. Vamos usar as mais famosas no mundo dos negócios:</p>
+<ul class="simple">
+<li><p><strong>Pandas</strong>: Para ler e organizar dados (como o Excel).</p></li>
+<li><p><strong>Seaborn</strong>: Para criar gráficos bonitos e profissionais com facilidade.</p></li>
+<li><p><strong>Matplotlib</strong>: A biblioteca gráfica base do Python, usada junto com o Seaborn para personalização extra.</p></li>
+<li><p><strong>Pingouin</strong>: Para testes estatísticos de hipóteses, com resultados em formato de tabela legível.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importando nossas bibliotecas (nossos &quot;aplicativos&quot;)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Configurando um tema visual bonito para os gráficos</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="series-temporais-grafico-de-linha">
+<h3>1.3.1. Séries Temporais (Gráfico de Linha)<a class="headerlink" href="#series-temporais-grafico-de-linha" title="Link to this heading">#</a></h3>
+<p>Vamos analisar um conjunto de dados real sobre a quantidade de passageiros em voos ao longo dos anos. Veja como é simples criar um gráfico de série temporal com apenas uma linha de código principal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregando os dados de voos que já vem embutidos no Seaborn</span>
+<span class="n">voos</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;flights&quot;</span><span class="p">)</span>
+
+<span class="c1"># Criando o gráfico de linha (Série Temporal) com xlabel e ylabel</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">voos</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;passengers&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Ano&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Passageiros&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Passageiros&#39;)
+</pre></div>
+</div>
+<img alt="_images/0df635132ba858cab9b0719ba5c26ad1c780bef787ab818a4cf27464e8e4046e.png" src="_images/0df635132ba858cab9b0719ba5c26ad1c780bef787ab818a4cf27464e8e4046e.png" />
+</div>
+</div>
+</section>
+<section id="analisando-categorias-boxplot">
+<h3>1.3.2. Analisando Categorias (Boxplot)<a class="headerlink" href="#analisando-categorias-boxplot" title="Link to this heading">#</a></h3>
+<p>Agora, vamos imaginar que você gerencia um restaurante. Você quer saber: <strong>Em qual dia da semana os clientes gastam mais dinheiro?</strong></p>
+<p>O <em>Boxplot</em> é o gráfico perfeito para relacionar uma categoria (Dia da Semana) com um número contínuo (Valor da Conta). Ele mostra a mediana, os quartis e os valores atípicos (outliers) de forma compacta.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregando dados de gorjetas e contas de um restaurante</span>
+<span class="n">gorjetas</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+
+<span class="c1"># Criando o Boxplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">gorjetas</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set2&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;, ylabel=&#39;total_bill&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/877cea3f3afc626258423c91aff40adfd28d173b1ce65486fa1f033178b5da26.png" src="_images/877cea3f3afc626258423c91aff40adfd28d173b1ce65486fa1f033178b5da26.png" />
+</div>
+</div>
+<p>As bibliotecas vistas são as mais importantes para análise de dados, mas existem muitas outras que podem ser úteis dependendo do tipo de análise que você deseja fazer. O importante é saber que o Python tem uma vasta gama de ferramentas à sua disposição para transformar dados brutos em insights valiosos para o seu negócio.</p>
+<p>Outras bibliotecas populares incluem:</p>
+<ul class="simple">
+<li><p><strong>NumPy</strong>: Para cálculos numéricos avançados.</p></li>
+<li><p><strong>Matplotlib</strong>: Para gráficos personalizados e detalhados.</p></li>
+<li><p><strong>Plotly</strong>: Para gráficos interativos e visualizações avançadas.</p></li>
+<li><p><strong>Scikit-learn</strong>: Para machine learning e análise preditiva.</p></li>
+</ul>
+<p>Mas para este curso, focaremos principalmente em Pandas e Seaborn, pois são essenciais para a maioria das análises de dados que precisamos fazer.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exemplo-de-negocio-modulo-1">
+<h2>📊 Exemplo de Negócio — Módulo 1<a class="headerlink" href="#exemplo-de-negocio-modulo-1" title="Link to this heading">#</a></h2>
+<p><strong>Cenário:</strong> Você é analista em uma distribuidora. O gestor quer saber rapidamente o <strong>lucro líquido</strong> de uma venda específica e pede que você crie um mini-script em Python para calcular e exibir o resultado.</p>
+<p>Execute a célula abaixo e observe como o Python funciona como uma calculadora inteligente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exemplo de Negócio – Módulo 1</span>
+<span class="c1"># Dados de uma venda da distribuidora</span>
+<span class="n">preco_venda</span>   <span class="o">=</span> <span class="mf">4500.00</span>  <span class="c1"># Receita da venda</span>
+<span class="n">custo_produto</span> <span class="o">=</span> <span class="mf">2800.00</span>  <span class="c1"># Custo do produto</span>
+<span class="n">frete</span>         <span class="o">=</span> <span class="mf">150.00</span>   <span class="c1"># Custo de frete</span>
+<span class="n">impostos</span>      <span class="o">=</span> <span class="mf">360.00</span>   <span class="c1"># Impostos sobre a venda</span>
+
+<span class="n">lucro_liquido</span> <span class="o">=</span> <span class="n">preco_venda</span> <span class="o">-</span> <span class="n">custo_produto</span> <span class="o">-</span> <span class="n">frete</span> <span class="o">-</span> <span class="n">impostos</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Receita:          R$ </span><span class="si">{</span><span class="n">preco_venda</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Custos totais:    R$ </span><span class="si">{</span><span class="p">(</span><span class="n">custo_produto</span><span class="o">+</span><span class="n">frete</span><span class="o">+</span><span class="n">impostos</span><span class="p">)</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lucro líquido:    R$ </span><span class="si">{</span><span class="n">lucro_liquido</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Margem de lucro:  </span><span class="si">{</span><span class="n">lucro_liquido</span><span class="o">/</span><span class="n">preco_venda</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretação:</strong> A célula acima mostra a margem de lucro daquela venda. Se a margem cair abaixo de 10%, pode ser necessário renegociar o custo do produto ou o frete.</p>
+</section>
+<hr class="docutils" />
+<section id="exercicios-modulo-1">
+<h2>✏️ Exercícios — Módulo 1<a class="headerlink" href="#exercicios-modulo-1" title="Link to this heading">#</a></h2>
+<section id="questao-1-calcule-o-lucro-de-outro-produto">
+<h3>Questão 1 – Calcule o Lucro de Outro Produto<a class="headerlink" href="#questao-1-calcule-o-lucro-de-outro-produto" title="Link to this heading">#</a></h3>
+<p>Uma empresa vendeu um notebook por <strong>R$ 3.200,00</strong>. O custo do produto foi <strong>R$ 2.100,00</strong>, o frete <strong>R$ 80,00</strong> e os impostos <strong>R$ 256,00</strong>.</p>
+<p><strong>Tarefa:</strong> Adapte o código do exemplo acima para calcular o lucro líquido e a margem de lucro desse notebook. Substitua os valores e execute a célula.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Questão 1 – preencha os valores corretos e execute</span>
+<span class="n">preco_venda</span>   <span class="o">=</span> <span class="n">___</span>   <span class="c1"># R$ 3200,00</span>
+<span class="n">custo_produto</span> <span class="o">=</span> <span class="n">___</span>   <span class="c1"># R$ 2100,00</span>
+<span class="n">frete</span>         <span class="o">=</span> <span class="n">___</span>   <span class="c1"># R$ 80,00</span>
+<span class="n">impostos</span>      <span class="o">=</span> <span class="n">___</span>   <span class="c1"># R$ 256,00</span>
+
+<span class="n">lucro_liquido</span> <span class="o">=</span> <span class="n">preco_venda</span> <span class="o">-</span> <span class="n">custo_produto</span> <span class="o">-</span> <span class="n">frete</span> <span class="o">-</span> <span class="n">impostos</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lucro líquido:  R$ </span><span class="si">{</span><span class="n">lucro_liquido</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Margem:         </span><span class="si">{</span><span class="n">lucro_liquido</span><span class="o">/</span><span class="n">preco_venda</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questao-2-interprete-o-codigo">
+<h3>Questão 2 – Interprete o Código<a class="headerlink" href="#questao-2-interprete-o-codigo" title="Link to this heading">#</a></h3>
+<p>Leia o código abaixo e <strong>sem executá-lo</strong>, responda:</p>
+<ol class="arabic simple">
+<li><p>Qual valor será impresso na tela?</p></li>
+<li><p>O que a variável <code class="docutils literal notranslate"><span class="pre">margem</span></code> representa no contexto de negócios?</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">receita</span>  <span class="o">=</span> <span class="mi">12000</span>
+<span class="n">despesas</span> <span class="o">=</span> <span class="mi">9500</span>
+<span class="n">margem</span>   <span class="o">=</span> <span class="p">(</span><span class="n">receita</span> <span class="o">-</span> <span class="n">despesas</span><span class="p">)</span> <span class="o">/</span> <span class="n">receita</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Margem operacional: </span><span class="si">{</span><span class="n">margem</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Dica:</strong> Execute a célula abaixo para conferir sua resposta!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">receita</span>  <span class="o">=</span> <span class="mi">12000</span>
+<span class="n">despesas</span> <span class="o">=</span> <span class="mi">9500</span>
+<span class="n">margem</span>   <span class="o">=</span> <span class="p">(</span><span class="n">receita</span> <span class="o">-</span> <span class="n">despesas</span><span class="p">)</span> <span class="o">/</span> <span class="n">receita</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Margem operacional: </span><span class="si">{</span><span class="n">margem</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modulo-2-manipulacao-de-dados-e-estatistica-descritiva">
+<h1>Módulo 2: Manipulação de Dados e Estatística Descritiva<a class="headerlink" href="#modulo-2-manipulacao-de-dados-e-estatistica-descritiva" title="Link to this heading">#</a></h1>
+<p>Bem-vindos ao coração da análise de dados! Hoje vamos aprender a trazer dados do mundo real (arquivos CSV e Excel) para dentro do Python e descobrir como limpá-los.</p>
+<p>Pense no <strong>Pandas</strong> como um Excel com “superpoderes”, capaz de lidar com milhões de linhas em segundos sem travar o seu computador.</p>
+<section id="importando-dados">
+<h2>2.1 Importando Dados<a class="headerlink" href="#importando-dados" title="Link to this heading">#</a></h2>
+<p>A primeira etapa de qualquer projeto de negócios é carregar as informações. Vamos usar a função <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> do Pandas para ler uma base de dados imobiliários que já vem de exemplo no Google Colab.</p>
+<blockquote>
+<div><p><strong>Dica:</strong> Em projetos reais, você substituiria <code class="docutils literal notranslate"><span class="pre">'sample_data/california_housing_train.csv'</span></code> pelo caminho do seu próprio arquivo, por exemplo <code class="docutils literal notranslate"><span class="pre">'vendas_2024.csv'</span></code>.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Importando a biblioteca Pandas (apelidada carinhosamente de &#39;pd&#39;)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 2. Lendo o arquivo CSV e guardando em uma variável chamada &#39;df&#39; (Data Frame)</span>
+<span class="c1"># df = pd.read_csv(&#39;sample_data/california_housing_train.csv&#39;)</span>
+
+<span class="c1"># Lendo diretamente de um site</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/vendas.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># 3. Mostrando as 5 primeiras linhas da nossa tabela (como se fosse o topo da planilha)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inspecao-e-limpeza">
+<h2>2.2 Inspeção e Limpeza<a class="headerlink" href="#inspecao-e-limpeza" title="Link to this heading">#</a></h2>
+<p>Dados reais são bagunçados! Eles vêm com informações faltando (valores nulos ou <code class="docutils literal notranslate"><span class="pre">NaN</span></code>) e linhas duplicadas. Se não limparmos isso, nossas análises e decisões de negócios estarão erradas.</p>
+<p>Vamos inspecionar a saúde da nossa base.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Quantas linhas e colunas temos?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tamanho da base:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Existe algum valor vazio (nulo) na nossa tabela?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Valores vazios por coluna:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como sabemos que dados sujos atrapalham decisões, vamos usar alguns comandos para tratar os valores nulos e remover duplicatas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LIMPEZA DE DADOS</span>
+
+<span class="c1"># Removendo linhas que tenham valores vazios (Drop NA)</span>
+<span class="n">df_limpo</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Removendo linhas idênticas (Duplicatas)</span>
+<span class="n">df_limpo</span> <span class="o">=</span> <span class="n">df_limpo</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tamanho original:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Limpeza concluída! Nova quantidade de linhas:&quot;</span><span class="p">,</span> <span class="n">df_limpo</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estatistica-descritiva">
+<h2>2.3 Estatística Descritiva<a class="headerlink" href="#estatistica-descritiva" title="Link to this heading">#</a></h2>
+<p>Com os dados limpos, podemos começar a extrair inteligência. Qual é o preço médio dos imóveis? Qual é o valor máximo?</p>
+<p>O Pandas nos dá um resumo executivo com apenas um comando: <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>. Depois, vamos preparar o terreno para estatísticas mais avançadas com o pacote <strong>Pingouin</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># O resumo executivo dos dados numéricos (Média, Desvio Padrão, Min, Max)</span>
+<span class="c1"># O comando describe() gera a estatística de todas colunas numéricas de uma vez!</span>
+<span class="n">df_limpo</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exemplo-de-negocio-modulo-2">
+<h2>📊 Exemplo de Negócio — Módulo 2<a class="headerlink" href="#exemplo-de-negocio-modulo-2" title="Link to this heading">#</a></h2>
+<p><strong>Cenário:</strong> O departamento de RH precisa de um relatório rápido sobre a folha de pagamento. Vamos carregar o arquivo <code class="docutils literal notranslate"><span class="pre">rh_salarios.csv</span></code>, inspecionar a saúde dos dados e extrair estatísticas descritivas para uma reunião executiva.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Carregando dados de salários do RH</span>
+<span class="n">df_rh2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/rh_salarios.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Inspeção rápida</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Linhas e colunas:&#39;</span><span class="p">,</span> <span class="n">df_rh2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Valores nulos:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">df_rh2</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Limpeza</span>
+<span class="n">df_rh2</span> <span class="o">=</span> <span class="n">df_rh2</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+<span class="c1"># Estatísticas executivas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">--- Relatório de Salários ---&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Salário médio:   R$ </span><span class="si">{</span><span class="n">df_rh2</span><span class="p">[</span><span class="s1">&#39;Salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Salário mediano: R$ </span><span class="si">{</span><span class="n">df_rh2</span><span class="p">[</span><span class="s1">&#39;Salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Menor salário:   R$ </span><span class="si">{</span><span class="n">df_rh2</span><span class="p">[</span><span class="s1">&#39;Salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Maior salário:   R$ </span><span class="si">{</span><span class="n">df_rh2</span><span class="p">[</span><span class="s1">&#39;Salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretação:</strong> Quando a média é muito maior que a mediana, existe uma concentração de salários altos ‘puxando’ a média. Nesse caso, a <strong>mediana</strong> é a medida mais honesta para comunicar ao RH o salário ‘típico’ da empresa.</p>
+</section>
+<hr class="docutils" />
+<section id="exercicios-modulo-2">
+<h2>✏️ Exercícios — Módulo 2<a class="headerlink" href="#exercicios-modulo-2" title="Link to this heading">#</a></h2>
+<section id="questao-1-analise-os-dados-de-vendas">
+<h3>Questão 1 – Analise os Dados de Vendas<a class="headerlink" href="#questao-1-analise-os-dados-de-vendas" title="Link to this heading">#</a></h3>
+<p>Usando o arquivo <code class="docutils literal notranslate"><span class="pre">vendas.csv</span></code> (que já foi carregado como <code class="docutils literal notranslate"><span class="pre">df</span></code> no início do módulo), responda:</p>
+<ul class="simple">
+<li><p>Quantas linhas e colunas ele possui?</p></li>
+<li><p>Existe algum valor nulo?</p></li>
+<li><p>Qual é o faturamento médio por linha do arquivo?</p></li>
+</ul>
+<p><strong>Tarefa:</strong> Complete e execute o código abaixo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/vendas.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># 1. Tamanho da base</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tamanho:&#39;</span><span class="p">,</span> <span class="n">df_v</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># 2. Valores nulos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Valores nulos:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_v</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># 3. Faturamento médio – complete a linha abaixo</span>
+<span class="c1"># media_fat = df_v[___].mean()</span>
+<span class="c1"># print(f&#39;Faturamento médio: R$ {media_fat:,.2f}&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questao-2-interprete-o-describe">
+<h3>Questão 2 – Interprete o <code class="docutils literal notranslate"><span class="pre">.describe()</span></code><a class="headerlink" href="#questao-2-interprete-o-describe" title="Link to this heading">#</a></h3>
+<p>Execute o código abaixo e responda às perguntas:</p>
+<ol class="arabic simple">
+<li><p>Qual é o faturamento <strong>mínimo</strong> registrado?</p></li>
+<li><p>Qual é o valor do <strong>3º quartil (75%)</strong> e o que ele significa para o negócio?</p></li>
+<li><p>A base de vendas está equilibrada entre regiões? Como você verificaria isso com Pandas?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_v</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/vendas.csv&#39;</span><span class="p">)</span>
+<span class="n">df_v</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modulo-3-visualizacao-de-dados-com-seaborn">
+<h1>Módulo 3: Visualização de Dados com Seaborn<a class="headerlink" href="#modulo-3-visualizacao-de-dados-com-seaborn" title="Link to this heading">#</a></h1>
+<p>No mundo dos negócios, uma boa visualização pode convencer a diretoria mais rápido do que uma planilha com milhares de linhas.</p>
+<p>Vamos usar a biblioteca <strong>Seaborn</strong>. Ela foi criada com uma filosofia simples: criar gráficos estatísticos lindos usando apenas <strong>uma ou duas linhas de código</strong>.</p>
+<section id="topico-3-1-graficos-essenciais-para-negocios">
+<h2>Tópico 3.1: Gráficos Essenciais para Negócios<a class="headerlink" href="#topico-3-1-graficos-essenciais-para-negocios" title="Link to this heading">#</a></h2>
+<p>Vamos explorar 3 cenários comuns de negócios lendo dados diretamente de arquivos CSV:</p>
+<ol class="arabic simple">
+<li><p><strong>Comparação:</strong> Vendas por Região (Gráfico de Barras)</p></li>
+<li><p><strong>Distribuição:</strong> Salários da Empresa (Histograma)</p></li>
+<li><p><strong>Correlação:</strong> Investimento vs. Retorno (Gráfico de Dispersão)</p></li>
+</ol>
+<section id="cenario-1-vendas-por-regiao-grafico-de-barras">
+<h3>Cenário 1: Vendas por Região (Gráfico de Barras)<a class="headerlink" href="#cenario-1-vendas-por-regiao-grafico-de-barras" title="Link to this heading">#</a></h3>
+<p>Qual região traz mais faturamento para a empresa?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregando a base de dados</span>
+<span class="n">df_vendas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/vendas.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Criando o gráfico (informamos os dados, o eixo X, o eixo Y e uma paleta de cores)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vendas</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Regiao&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Faturamento&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Blues_d&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cenario-2-people-analytics-histograma">
+<h3>Cenário 2: People Analytics (Histograma)<a class="headerlink" href="#cenario-2-people-analytics-histograma" title="Link to this heading">#</a></h3>
+<p>Como estão distribuídos os salários dos nossos funcionários? A maioria ganha perto da base ou temos muitos salários altos puxando a média?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregando a base do RH</span>
+<span class="n">df_rh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/rh_salarios.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Criando o histograma para ver onde os salários se concentram</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_rh</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Salario&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cenario-3-marketing-vs-vendas-grafico-de-dispersao">
+<h3>Cenário 3: Marketing vs. Vendas (Gráfico de Dispersão)<a class="headerlink" href="#cenario-3-marketing-vs-vendas-grafico-de-dispersao" title="Link to this heading">#</a></h3>
+<p>Será que as campanhas em que investimos mais dinheiro realmente geram mais vendas?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregando os resultados das campanhas</span>
+<span class="n">df_marketing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/marketing.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Criando o gráfico de pontos (dispersão)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_marketing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Investimento&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Vendas&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="topico-3-2-customizacao-simples-sem-complicacao">
+<h2>Tópico 3.2: Customização Simples (Sem Complicação!)<a class="headerlink" href="#topico-3-2-customizacao-simples-sem-complicacao" title="Link to this heading">#</a></h2>
+<p>Você não precisa de códigos longos para deixar o gráfico com cara de relatório executivo. Podemos usar os recursos nativos do Seaborn para agrupar informações rapidamente.</p>
+<p>Vamos voltar ao nosso gráfico de vendas, mas agora queremos ver as vendas divididas por <strong>Ano</strong> e por <strong>Região</strong> no mesmo gráfico.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usando o parâmetro &#39;hue&#39; (matiz/cor) para dividir as barras por Ano.</span>
+<span class="c1"># É como fazer uma Tabela Dinâmica do Excel, mas visualmente!</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vendas</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Regiao&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Faturamento&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Ano&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bonus-o-mundo-classico-do-python-matplotlib">
+<h2>Bônus: O Mundo “Clássico” do Python (Matplotlib)<a class="headerlink" href="#bonus-o-mundo-classico-do-python-matplotlib" title="Link to this heading">#</a></h2>
+<p>Você deve estar se perguntando: <em>“Se o Seaborn é tão fácil, por que as pessoas usam outras coisas?”</em></p>
+<p>A verdade é que o Seaborn é construído <strong>em cima</strong> de uma biblioteca muito mais antiga e famosa chamada <strong>Matplotlib</strong>. O Matplotlib é extremamente poderoso, mas ele é “manual”.</p>
+<p>Para provar como o Seaborn facilita a sua vida nos negócios, veja a diferença para criar um simples gráfico de barras com a média de vendas por região:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># O JEITO SEABORN (Automático)</span>
+<span class="c1"># Ele mesmo já junta as regiões iguais e calcula a média das vendas sozinho!</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_vendas</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Regiao&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Faturamento&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># O JEITO MATPLOTLIB (Manual)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 1. Primeiro precisamos agrupar os dados e calcular a média manualmente (tipo Tabela Dinâmica)</span>
+<span class="n">media_vendas</span> <span class="o">=</span> <span class="n">df_vendas</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Regiao&#39;</span><span class="p">)[</span><span class="s1">&#39;Faturamento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># 2. Depois temos que passar os eixos separadamente para desenhar o gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">media_vendas</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">media_vendas</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Resumo para Negócios:</strong>
+Use o <strong>Matplotlib</strong> quando precisar desenhar do zero ou fazer ajustes muito finos.
+Use o <strong>Seaborn</strong> para transformar suas tabelas em <em>insights</em> visuais estatísticos em segundos!</p>
+</section>
+<hr class="docutils" />
+<section id="exemplo-de-negocio-modulo-3">
+<h2>📊 Exemplo de Negócio — Módulo 3<a class="headerlink" href="#exemplo-de-negocio-modulo-3" title="Link to this heading">#</a></h2>
+<p><strong>Cenário:</strong> O time de marketing quer uma visualização rápida para apresentar na reunião de resultados. Você precisa mostrar a <strong>relação entre investimento em marketing e vendas geradas</strong>, com um gráfico de dispersão profissional.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+
+<span class="n">df_mkt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/marketing.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Gráfico de dispersão com linha de tendência</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_mkt</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Investimento&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Vendas&#39;</span><span class="p">,</span>
+            <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">},</span> <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;red&#39;</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Investimento em Marketing vs. Vendas Geradas&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Investimento (R$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Vendas (R$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpretação:</strong> A linha vermelha é a <strong>linha de tendência (regressão linear)</strong>. Se os pontos acompanham bem a linha, o investimento em marketing tem um impacto consistente nas vendas. Pontos muito distantes da linha são campanhas com resultado anormal (muito acima ou abaixo do esperado).</p>
+</section>
+<hr class="docutils" />
+<section id="exercicios-modulo-3">
+<h2>✏️ Exercícios — Módulo 3<a class="headerlink" href="#exercicios-modulo-3" title="Link to this heading">#</a></h2>
+<section id="questao-1-crie-um-histograma-com-cor-diferente">
+<h3>Questão 1 – Crie um Histograma com Cor Diferente<a class="headerlink" href="#questao-1-crie-um-histograma-com-cor-diferente" title="Link to this heading">#</a></h3>
+<p>O gráfico de histograma dos salários foi criado com a cor <code class="docutils literal notranslate"><span class="pre">purple</span></code>. <strong>Tarefa:</strong> Copie o código abaixo, altere a cor para <code class="docutils literal notranslate"><span class="pre">'steelblue'</span></code> e adicione um título ao gráfico usando <code class="docutils literal notranslate"><span class="pre">plt.title()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+<span class="n">df_rh3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/rh_salarios.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Modifique a cor e adicione plt.title() aqui:</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_rh3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Salario&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="c1"># plt.title(___)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questao-2-interprete-o-grafico-de-barras">
+<h3>Questão 2 – Interprete o Gráfico de Barras<a class="headerlink" href="#questao-2-interprete-o-grafico-de-barras" title="Link to this heading">#</a></h3>
+<p>Execute o código abaixo, que carrega os dados de vendas e cria um gráfico de barras por Região e Ano.</p>
+<p>Após ver o gráfico, responda:</p>
+<ol class="arabic simple">
+<li><p>Qual região teve o maior crescimento entre 2022 e 2023?</p></li>
+<li><p>Existe alguma região onde as vendas <strong>caíram</strong>? Se sim, qual?</p></li>
+<li><p>O parâmetro <code class="docutils literal notranslate"><span class="pre">hue='Ano'</span></code> serviu para quê?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+<span class="n">df_v3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/vendas.csv&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_v3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Regiao&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Faturamento&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Ano&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Faturamento por Região e Ano&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modulo-4-testes-de-hipoteses-com-pingouin">
+<h1>Módulo 4: Testes de Hipóteses com Pingouin<a class="headerlink" href="#modulo-4-testes-de-hipoteses-com-pingouin" title="Link to this heading">#</a></h1>
+<p>Em negócios, nós não gostamos de adivinhar. Se a nova página do site (Versão B) vendeu mais que a antiga (Versão A), foi porque ela é realmente melhor ou foi apenas <em>sorte</em> daquela semana?</p>
+<p>A estatística responde isso. Vamos usar a biblioteca <strong>Pingouin</strong> para fazer testes rigorosos de forma extremamente simples.</p>
+<blockquote>
+<div><p><strong>Nota:</strong> O Pingouin não vem instalado por padrão no Google Colab. Vamos instalá-lo com o comando abaixo (o <code class="docutils literal notranslate"><span class="pre">!</span></code> indica que é um comando do sistema operacional, não Python).</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalando o Pingouin (execute esta célula apenas uma vez por sessão do Colab)</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pingouin
+<span class="kn">import</span><span class="w"> </span><span class="nn">pingouin</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="topico-4-1-teste-a-b-o-famoso-teste-t">
+<h2>Tópico 4.1: Teste A/B (O Famoso Teste T)<a class="headerlink" href="#topico-4-1-teste-a-b-o-famoso-teste-t" title="Link to this heading">#</a></h2>
+<p><strong>Cenário:</strong> Lançamos duas versões de um anúncio (A e B). Queremos saber se a diferença de cliques entre eles é real.</p>
+<p><strong>Regra de Ouro da Estatística para Negócios:</strong>
+Olhe para a coluna <strong><code class="docutils literal notranslate"><span class="pre">p-val</span></code></strong> (Valor-P) no resultado.</p>
+<ul class="simple">
+<li><p>Se for <strong>MENOR que 0.05</strong>: A diferença é real e comprovada!</p></li>
+<li><p>Se for <strong>MAIOR que 0.05</strong>: A diferença não é confiável (pode ter sido sorte).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lendo os dados do nosso Teste A/B</span>
+<span class="n">df_ab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/teste_ab_vendas.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Separando quem viu o Anúncio A e quem viu o Anúncio B</span>
+<span class="n">vendas_A</span> <span class="o">=</span> <span class="n">df_ab</span><span class="p">[</span><span class="n">df_ab</span><span class="p">[</span><span class="s1">&#39;Anuncio&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">][</span><span class="s1">&#39;Vendas&#39;</span><span class="p">]</span>
+<span class="n">vendas_B</span> <span class="o">=</span> <span class="n">df_ab</span><span class="p">[</span><span class="n">df_ab</span><span class="p">[</span><span class="s1">&#39;Anuncio&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">][</span><span class="s1">&#39;Vendas&#39;</span><span class="p">]</span>
+
+<span class="c1"># Executando o Teste T com Pingouin</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">vendas_A</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">vendas_B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="topico-4-2-comparando-varias-opcoes-anova">
+<h2>Tópico 4.2: Comparando Várias Opções (ANOVA)<a class="headerlink" href="#topico-4-2-comparando-varias-opcoes-anova" title="Link to this heading">#</a></h2>
+<p>O Teste T só compara duas coisas. E se quisermos testar <strong>3 designs diferentes de embalagem</strong> nas prateleiras e ver qual vende mais?</p>
+<p>Para comparar 3 ou mais grupos, usamos a <strong>ANOVA</strong> (Análise de Variância). O Pingouin facilita muito porque podemos passar a tabela inteira para ele.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lendo dados de vendas de 3 designs diferentes (Vermelho, Azul, Verde)</span>
+<span class="n">df_embalagens</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/embalagens.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Executando a ANOVA:</span>
+<span class="c1"># data = nossa tabela</span>
+<span class="c1"># dv = variável dependente (o que queremos medir? &#39;Vendas&#39;)</span>
+<span class="c1"># between = qual coluna divide os grupos? (&#39;Design_Embalagem&#39;)</span>
+
+<span class="n">pg</span><span class="o">.</span><span class="n">anova</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_embalagens</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="s1">&#39;Vendas&#39;</span><span class="p">,</span> <span class="n">between</span><span class="o">=</span><span class="s1">&#39;Design_Embalagem&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="topico-4-3-correlacao-causa-e-efeito">
+<h2>Tópico 4.3: Correlação (Causa e Efeito?)<a class="headerlink" href="#topico-4-3-correlacao-causa-e-efeito" title="Link to this heading">#</a></h2>
+<p>Queremos provar matematicamente se dar descontos maiores realmente aumenta o volume de compras.</p>
+<p>A Correlação vai de -1 a 1. Quanto mais perto de 1, mais forte é a relação positiva (um sobe, o outro sobe).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lendo os dados de promoções</span>
+<span class="n">df_promocoes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;descontos.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Testando a correlação entre a porcentagem de desconto e as unidades vendidas</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_promocoes</span><span class="p">[</span><span class="s1">&#39;Desconto_Oferecido&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df_promocoes</span><span class="p">[</span><span class="s1">&#39;Unidades_Vendidas&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bonus-o-mundo-classico-do-python-scipy">
+<h2>Bônus: O Mundo “Clássico” do Python (SciPy)<a class="headerlink" href="#bonus-o-mundo-classico-do-python-scipy" title="Link to this heading">#</a></h2>
+<p>Por que escolhemos o Pingouin para este curso?</p>
+<p>No mercado de trabalho ou lendo tutoriais no Google, você fatalmente esbarrará no pacote <strong><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code></strong>. Ele é a ferramenta mais antiga e clássica para estatística em Python.</p>
+<p>Vamos rodar o mesmo Teste A/B do início usando o <code class="docutils literal notranslate"><span class="pre">scipy</span></code> apenas para você ver a diferença. Note como a resposta dele é feita para matemáticos, enquanto o Pingouin gera uma tabela bonita e fácil de ler (DataFrame).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importando a biblioteca clássica</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># Rodando o mesmo Teste T (Teste A/B) do Tópico 4.1</span>
+<span class="n">resultado_scipy</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">vendas_A</span><span class="p">,</span> <span class="n">vendas_B</span><span class="p">)</span>
+
+<span class="c1"># Veja como a apresentação do resultado é mais &quot;crua&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado_scipy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exemplo-de-negocio-modulo-4">
+<h2>📊 Exemplo de Negócio — Módulo 4<a class="headerlink" href="#exemplo-de-negocio-modulo-4" title="Link to this heading">#</a></h2>
+<p><strong>Cenário:</strong> A equipe comercial quer saber se oferecer <strong>descontos maiores</strong> realmente aumenta o volume de unidades vendidas. Vamos usar o arquivo <code class="docutils literal notranslate"><span class="pre">descontos.csv</span></code> e calcular a correlação com o Pingouin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pingouin</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+
+<span class="n">df_desc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/descontos.csv&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Primeiras linhas:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_desc</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Correlação de Pearson</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_desc</span><span class="p">[</span><span class="s1">&#39;Desconto_Oferecido&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df_desc</span><span class="p">[</span><span class="s1">&#39;Unidades_Vendidas&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;--- Resultado da Correlação ---&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">[[</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;CI95%&#39;</span><span class="p">,</span><span class="s1">&#39;p-val&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Como interpretar:</strong> Observe a coluna <strong><code class="docutils literal notranslate"><span class="pre">r</span></code></strong> (coeficiente de correlação):</p>
+<ul class="simple">
+<li><p><strong>r próximo de 1</strong>: forte relação positiva — descontos maiores → mais unidades vendidas.</p></li>
+<li><p><strong>p-val &lt; 0.05</strong>: o resultado é estatisticamente significativo, não é sorte.</p></li>
+</ul>
+<p>Se <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">&gt;</span> <span class="pre">0.7</span></code> e <code class="docutils literal notranslate"><span class="pre">p-val</span> <span class="pre">&lt;</span> <span class="pre">0.05</span></code>, a política de descontos tem impacto real nas vendas!</p>
+</section>
+<hr class="docutils" />
+<section id="exercicios-modulo-4">
+<h2>✏️ Exercícios — Módulo 4<a class="headerlink" href="#exercicios-modulo-4" title="Link to this heading">#</a></h2>
+<section id="questao-1-realize-um-teste-a-b">
+<h3>Questão 1 – Realize um Teste A/B<a class="headerlink" href="#questao-1-realize-um-teste-a-b" title="Link to this heading">#</a></h3>
+<p>O arquivo <code class="docutils literal notranslate"><span class="pre">teste_ab_vendas.csv</span></code> contém as vendas geradas pelo <strong>Anúncio A</strong> e pelo <strong>Anúncio B</strong>.</p>
+<p><strong>Tarefa:</strong> Complete o código abaixo para executar o Teste T e determine:</p>
+<ul class="simple">
+<li><p>O p-val é menor ou maior que 0.05?</p></li>
+<li><p>Qual anúncio você recomendaria manter? Por quê?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pingouin</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+
+<span class="n">df_ab2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/teste_ab_vendas.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Separando os grupos</span>
+<span class="n">vendas_A</span> <span class="o">=</span> <span class="n">df_ab2</span><span class="p">[</span><span class="n">df_ab2</span><span class="p">[</span><span class="s1">&#39;Anuncio&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">][</span><span class="s1">&#39;Vendas&#39;</span><span class="p">]</span>
+<span class="n">vendas_B</span> <span class="o">=</span> <span class="n">df_ab2</span><span class="p">[</span><span class="n">df_ab2</span><span class="p">[</span><span class="s1">&#39;Anuncio&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">][</span><span class="s1">&#39;Vendas&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Média Anúncio A: R$ </span><span class="si">{</span><span class="n">vendas_A</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Média Anúncio B: R$ </span><span class="si">{</span><span class="n">vendas_B</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Execute o Teste T – complete a linha abaixo:</span>
+<span class="c1"># pg.ttest(x=___, y=___)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questao-2-interprete-uma-anova">
+<h3>Questão 2 – Interprete uma ANOVA<a class="headerlink" href="#questao-2-interprete-uma-anova" title="Link to this heading">#</a></h3>
+<p>Execute o código abaixo, que testa se o design da embalagem (Vermelho, Azul ou Verde) afeta as vendas.</p>
+<p>Após rodar, responda:</p>
+<ol class="arabic simple">
+<li><p>O valor de <strong>p-val</strong> indica que a diferença entre embalagens é significativa?</p></li>
+<li><p>A coluna <strong><code class="docutils literal notranslate"><span class="pre">ddof1</span></code></strong> indica quantos grupos foram comparados menos 1. Quantos grupos existem no nosso teste?</p></li>
+<li><p>Com base nessa ANOVA, a empresa deveria mudar a embalagem atual?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pingouin</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+
+<span class="n">df_emb2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/gustavocxavier/analise-de-dados-para-negocios/refs/heads/main/Dados/embalagens.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># ANOVA de um fator</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">anova</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_emb2</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="s1">&#39;Vendas&#39;</span><span class="p">,</span> <span class="n">between</span><span class="o">=</span><span class="s1">&#39;Design_Embalagem&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Módulo 1: Fundamentos do Google Colab e Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-ambiente-google-colab">1.1 O Ambiente Google Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celula-de-codigo">Célula de Código</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logica-basica-de-python">1.2 Lógica Básica de Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-poder-das-bibliotecas">1.3: O Poder das Bibliotecas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series-temporais-grafico-de-linha">1.3.1. Séries Temporais (Gráfico de Linha)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisando-categorias-boxplot">1.3.2. Analisando Categorias (Boxplot)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-1">📊 Exemplo de Negócio — Módulo 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-1">✏️ Exercícios — Módulo 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-calcule-o-lucro-de-outro-produto">Questão 1 – Calcule o Lucro de Outro Produto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-codigo">Questão 2 – Interprete o Código</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-2-manipulacao-de-dados-e-estatistica-descritiva">Módulo 2: Manipulação de Dados e Estatística Descritiva</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importando-dados">2.1 Importando Dados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecao-e-limpeza">2.2 Inspeção e Limpeza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estatistica-descritiva">2.3 Estatística Descritiva</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-2">📊 Exemplo de Negócio — Módulo 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-2">✏️ Exercícios — Módulo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-analise-os-dados-de-vendas">Questão 1 – Analise os Dados de Vendas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-describe">Questão 2 – Interprete o <code class="docutils literal notranslate"><span class="pre">.describe()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-3-visualizacao-de-dados-com-seaborn">Módulo 3: Visualização de Dados com Seaborn</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-3-1-graficos-essenciais-para-negocios">Tópico 3.1: Gráficos Essenciais para Negócios</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cenario-1-vendas-por-regiao-grafico-de-barras">Cenário 1: Vendas por Região (Gráfico de Barras)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cenario-2-people-analytics-histograma">Cenário 2: People Analytics (Histograma)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cenario-3-marketing-vs-vendas-grafico-de-dispersao">Cenário 3: Marketing vs. Vendas (Gráfico de Dispersão)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-3-2-customizacao-simples-sem-complicacao">Tópico 3.2: Customização Simples (Sem Complicação!)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-o-mundo-classico-do-python-matplotlib">Bônus: O Mundo “Clássico” do Python (Matplotlib)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-3">📊 Exemplo de Negócio — Módulo 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-3">✏️ Exercícios — Módulo 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-crie-um-histograma-com-cor-diferente">Questão 1 – Crie um Histograma com Cor Diferente</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-o-grafico-de-barras">Questão 2 – Interprete o Gráfico de Barras</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modulo-4-testes-de-hipoteses-com-pingouin">Módulo 4: Testes de Hipóteses com Pingouin</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-4-1-teste-a-b-o-famoso-teste-t">Tópico 4.1: Teste A/B (O Famoso Teste T)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-4-2-comparando-varias-opcoes-anova">Tópico 4.2: Comparando Várias Opções (ANOVA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topico-4-3-correlacao-causa-e-efeito">Tópico 4.3: Correlação (Causa e Efeito?)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-o-mundo-classico-do-python-scipy">Bônus: O Mundo “Clássico” do Python (SciPy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-negocio-modulo-4">📊 Exemplo de Negócio — Módulo 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-modulo-4">✏️ Exercícios — Módulo 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-1-realize-um-teste-a-b">Questão 1 – Realize um Teste A/B</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questao-2-interprete-uma-anova">Questão 2 – Interprete uma ANOVA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
